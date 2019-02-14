@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WS_Adobe_Gen.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WS_Adobe_Gen_etr_forms_ETR_etr_formsService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.85.32.78:8080/soap/services/ETR/etr_forms</Value>
+    </Setting>
+    <Setting Name="WS_Adobe_Gen_Add_header_footer_ETR_Add_header_footerService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.85.32.78:8080/soap/services/ETR/Add_header_footer</Value>
+    </Setting>
+    <Setting Name="WS_Adobe_Gen_Add_watermark_ETR_Add_watermarkService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.85.32.78:8080/soap/services/ETR/Add_watermark</Value>
+    </Setting>
+    <Setting Name="WS_Adobe_Gen_konverze_DA_ETR_konverze_DAService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.85.32.78:8080/soap/services/ETR/konverze_DA</Value>
+    </Setting>
+    <Setting Name="WS_Adobe_Gen_etr_konverze_pdfa_ETR_etr_konverze_pdfaService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.85.32.78:8080/soap/services/ETR/etr_konverze_pdfa</Value>
+    </Setting>
+    <Setting Name="WS_Adobe_Gen_LTD_LTDWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.85.68.11/ltd/ltd.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

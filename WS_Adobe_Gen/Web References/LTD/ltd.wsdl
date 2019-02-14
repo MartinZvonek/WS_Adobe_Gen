@@ -1,0 +1,1945 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://software602.com/longtermdocs/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://software602.com/longtermdocs/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://software602.com/longtermdocs/">
+      <s:element name="TestWebService">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestWebServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestWebServiceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestLicence">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestLicenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestLicenceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Input" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Profile" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConvertFileResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Output" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="Report" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertFileEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Input" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Options" type="tns:ConvertOptions" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomXMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ConvertOptions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="RemoveEmptyPages" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="en" name="ReportLanguage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="cz" name="OCRLanguage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="400" name="OCRRecognitionDpi" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="ForceShell" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="PDF" name="PdfFormat" type="tns:PdfFormat" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="ForcePDFVersion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BarcodeInfo" type="tns:BarcodeInformation" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZFO" type="tns:ZFO_options" />
+          <s:element minOccurs="0" maxOccurs="1" name="EML" type="tns:EML_options" />
+          <s:element minOccurs="0" maxOccurs="1" name="HTML" type="tns:HTML_options" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="AllowAnnotations" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Annotations" type="tns:ArrayOfPDF_Annotation" />
+          <s:element minOccurs="0" maxOccurs="1" name="Header" type="tns:HF_Options" />
+          <s:element minOccurs="0" maxOccurs="1" name="Footer" type="tns:HF_Options" />
+          <s:element minOccurs="0" maxOccurs="1" default="A4" name="PageFormat" type="tns:PageSize" />
+          <s:element minOccurs="0" maxOccurs="1" default="Portrait" name="PageOrientation" type="tns:PageOrientation" />
+          <s:element minOccurs="0" maxOccurs="1" default="true" name="UsePageCompression" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Metadata" type="tns:PdfMetadata" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="UseImageCompression" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="UsePDFCompression" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="DownsizeResolution" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="CompressMethod" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="100" name="JpegQuality" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="ConvertToCMYK" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="RemoveDuplicateImages" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="300" name="ConversionTimeout" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="AddWatermark" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Watermark" type="tns:PdfWatermark" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="AddStamp" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Stamp" type="tns:PdfStamp" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="AddAttachements" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="AttachementList" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppendFilesAtEnd" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="EnableMerge" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Merge" type="tns:PdfMerge" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="AddSecurity" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Security" type="tns:PdfSecurity" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="AddSignature" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Signature" type="tns:PdfSignature" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="AddTimeStamp" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="tns:PdfTimeStamp" />
+          <s:element minOccurs="0" maxOccurs="1" default="true" name="PreserveExistingSignatures" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="ConvertSignedPDF" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="StrictSignedPDFConversion" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="ReturnErrorIfNotModified" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="Report.xml" name="XMLReportTemplate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="Report_signatures.xml" name="XMLReportSignaturesTemplate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="AddXMLReportToXMP" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="ReturnFullXMPReport" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="MaxInputFileSize" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="*" name="AllowedFileTypes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="true" name="EnableOCR" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="ForceOCR" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="AddSourceAsPDFA3AssociatedFile" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="true" name="AddSourceIfNotChanged" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="ForcePDFAIfErrors" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="ForceImagePDFAIfErrors" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="200" name="ForceImagePDFAResolution" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="HttpHeaders" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PdfFormat">
+        <s:restriction base="s:string">
+          <s:enumeration value="PDF" />
+          <s:enumeration value="PDF_A_1b" />
+          <s:enumeration value="PDF_A_1a" />
+          <s:enumeration value="PDF_A_2b" />
+          <s:enumeration value="PDF_A_2a" />
+          <s:enumeration value="PDF_A_2u" />
+          <s:enumeration value="PDF_A_3b" />
+          <s:enumeration value="PDF_A_3a" />
+          <s:enumeration value="PDF_A_3u" />
+          <s:enumeration value="PDF_X_1" />
+          <s:enumeration value="PDF_X_3" />
+          <s:enumeration value="PDF_X_4" />
+          <s:enumeration value="PDF_X_5" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="BarcodeInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="PosX" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="PosY" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" default="100" name="Width" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" default="100" name="Height" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" default="Barcode_QR" name="Type" type="tns:Barcode_Subtype" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Data" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="1" name="Pages" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="Barcode_Subtype">
+        <s:restriction base="s:string">
+          <s:enumeration value="Barcode_1D_UPCVersionA" />
+          <s:enumeration value="Barcode_1D_UPCVersionE" />
+          <s:enumeration value="Barcode_1D_UPCSupplemental2Digit" />
+          <s:enumeration value="Barcode_1D_UPCSupplemental5Digit" />
+          <s:enumeration value="Barcode_1D_EAN13" />
+          <s:enumeration value="Barcode_1D_EAN8" />
+          <s:enumeration value="Barcode_1D_Interleaved2of5" />
+          <s:enumeration value="Barcode_1D_Standard2of5" />
+          <s:enumeration value="Barcode_1D_Industrial2of5" />
+          <s:enumeration value="Barcode_1D_Code39" />
+          <s:enumeration value="Barcode_1D_Code39Extended" />
+          <s:enumeration value="Barcode_1D_Codabar" />
+          <s:enumeration value="Barcode_1D_PostNet" />
+          <s:enumeration value="Barcode_1D_Bookland" />
+          <s:enumeration value="Barcode_1D_ISBN" />
+          <s:enumeration value="Barcode_1D_JAN13" />
+          <s:enumeration value="Barcode_1D_MSIMod10" />
+          <s:enumeration value="Barcode_1D_MSI2Mod10" />
+          <s:enumeration value="Barcode_1D_MSIMod11" />
+          <s:enumeration value="Barcode_1D_MSIMod11Mod10" />
+          <s:enumeration value="Barcode_1D_ModifiedPlessey" />
+          <s:enumeration value="Barcode_1D_Code11" />
+          <s:enumeration value="Barcode_1D_USD8" />
+          <s:enumeration value="Barcode_1D_UCC12" />
+          <s:enumeration value="Barcode_1D_UCC13" />
+          <s:enumeration value="Barcode_1D_LOGMARS" />
+          <s:enumeration value="Barcode_1D_Code128" />
+          <s:enumeration value="Barcode_1D_Code128A" />
+          <s:enumeration value="Barcode_1D_Code128B" />
+          <s:enumeration value="Barcode_1D_Code128C" />
+          <s:enumeration value="Barcode_1D_ITF14" />
+          <s:enumeration value="Barcode_1D_Code93" />
+          <s:enumeration value="Barcode_1D_TelePen" />
+          <s:enumeration value="Barcode_PDF417" />
+          <s:enumeration value="Barcode_QR" />
+          <s:enumeration value="Barcode_DataMatrix" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ZFO_options">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AttSettings" type="tns:Attachments_Settings" />
+          <s:element minOccurs="0" maxOccurs="1" default="true" name="ConvertDZ" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Attachments_Settings">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" default="CONVERT_FAILURE_ATTACH_ORIGINAL" name="ConversionHandling" type="tns:AttachmentConversionHandling" />
+          <s:element minOccurs="0" maxOccurs="1" default="*" name="AllowedFiletypes" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="AttachmentConversionHandling">
+        <s:restriction base="s:string">
+          <s:enumeration value="IGNORE_ATTACHMENTS" />
+          <s:enumeration value="ATTACH_WITHOUT_CONVERSION" />
+          <s:enumeration value="CONVERT_FAILURE_END" />
+          <s:enumeration value="CONVERT_FAILURE_SKIP" />
+          <s:enumeration value="CONVERT_FAILURE_ATTACH_ORIGINAL" />
+          <s:enumeration value="CONVERT_ALWAYS_ATTACH_ORIGINAL" />
+          <s:enumeration value="CONCAT_FAILURE_END" />
+          <s:enumeration value="CONCAT_FAILURE_SKIP" />
+          <s:enumeration value="CONCAT_FAILURE_ATTACH_ORIGINAL" />
+          <s:enumeration value="CONCAT_FAILURE_ATTACH_ERR_PAGE_AND_ORIGINAL" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="EML_options">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AttSettings" type="tns:Attachments_Settings" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="CertificatePath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="Decrypt" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="ExportSignature" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="cz" name="HeaderLanguage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HTML_options">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Header" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="true" name="AvoidTextBreak" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="AvoidImageBreak" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="en-US" name="ArchiveHeaderLanguage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="20" name="HeaderHeight" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Footer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="20" name="FooterHeight" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="PageEncoding" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="true" name="AutoDetectEncoding" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="BaseURL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="true" name="DownloadReferencedFiles" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="DoArchive" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="true" name="FitWidth" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="20" name="MarginAll" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="FitHeight" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="AutoSize" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="CustomPageHeight" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="CustomPageWidth" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPDF_Annotation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PDF_Annotation" nillable="true" type="tns:PDF_Annotation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PDF_Annotation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" default="Points" name="Format" type="tns:Coordinates_Format" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="Pos_X" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="Pos_Y" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="Size_X" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="Size_Y" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Text" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="1" name="Page" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="Coordinates_Format">
+        <s:restriction base="s:string">
+          <s:enumeration value="Points" />
+          <s:enumeration value="Relative" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="HF_Options">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Text" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="20" name="Height" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="Center" name="HorizontalAlignment" type="tns:HorizontalPosition" />
+          <s:element minOccurs="0" maxOccurs="1" default="Center" name="VerticalAlignment" type="tns:VerticalPosition" />
+          <s:element minOccurs="0" maxOccurs="1" default="AllPages" name="Mode" type="tns:PlacementMode" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Pages" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="Helvetica" name="FontName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="12" name="FontSize" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="50" name="Transparency" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="HorizontalPosition">
+        <s:restriction base="s:string">
+          <s:enumeration value="Left" />
+          <s:enumeration value="Center" />
+          <s:enumeration value="Right" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="VerticalPosition">
+        <s:restriction base="s:string">
+          <s:enumeration value="Top" />
+          <s:enumeration value="Center" />
+          <s:enumeration value="Bottom" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PlacementMode">
+        <s:restriction base="s:string">
+          <s:enumeration value="FirstPage" />
+          <s:enumeration value="AllPages" />
+          <s:enumeration value="LastPage" />
+          <s:enumeration value="UserDefined" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PageSize">
+        <s:restriction base="s:string">
+          <s:enumeration value="Custom" />
+          <s:enumeration value="A0" />
+          <s:enumeration value="A1" />
+          <s:enumeration value="A10" />
+          <s:enumeration value="A2" />
+          <s:enumeration value="A3" />
+          <s:enumeration value="A4" />
+          <s:enumeration value="A5" />
+          <s:enumeration value="A6" />
+          <s:enumeration value="A7" />
+          <s:enumeration value="A8" />
+          <s:enumeration value="A9" />
+          <s:enumeration value="ArchA" />
+          <s:enumeration value="ArchB" />
+          <s:enumeration value="ArchC" />
+          <s:enumeration value="ArchD" />
+          <s:enumeration value="ArchE" />
+          <s:enumeration value="B0" />
+          <s:enumeration value="B1" />
+          <s:enumeration value="B2" />
+          <s:enumeration value="B3" />
+          <s:enumeration value="B4" />
+          <s:enumeration value="B5" />
+          <s:enumeration value="Flsa" />
+          <s:enumeration value="HalfLetter" />
+          <s:enumeration value="Ledger" />
+          <s:enumeration value="Legal" />
+          <s:enumeration value="Letter" />
+          <s:enumeration value="Letter11x17" />
+          <s:enumeration value="Note" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PageOrientation">
+        <s:restriction base="s:string">
+          <s:enumeration value="Portrait" />
+          <s:enumeration value="Landscape" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="PdfMetadata">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Author" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Keywords" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PdfWatermark">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" default="AllPages" name="Mode" type="tns:PlacementMode" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Pages" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="Angle" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="50" name="Strength" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="30" name="FontSize" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Text" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Font" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="Bottom" name="Layer" type="tns:PlacementLayer" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PlacementLayer">
+        <s:restriction base="s:string">
+          <s:enumeration value="Top" />
+          <s:enumeration value="Bottom" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="PdfStamp">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" default="AllPages" name="Mode" type="tns:PlacementMode" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Path" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Pages" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="PosX" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="PosY" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="Width" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="Height" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="AutoPlacement" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="Center" name="AutoPosHorizontal" type="tns:HorizontalPosition" />
+          <s:element minOccurs="0" maxOccurs="1" default="Center" name="AutoPosVertical" type="tns:VerticalPosition" />
+          <s:element minOccurs="0" maxOccurs="1" default="Bottom" name="Layer" type="tns:PlacementLayer" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="ResampleImage" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PdfMerge">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" default="Overwrite" name="Mode" type="tns:MergeMode" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="SaveCopyOnMerge" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="MergeMode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Overwrite" />
+          <s:enumeration value="Begin" />
+          <s:enumeration value="End" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="PdfSecurity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" default="PdfEncryption128BitAES" name="EncryptionAlgorithm" type="tns:EncryptionAlgorithm" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="UserPasswordCrypted" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="UserPasswordPlaintext" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="OwnerPasswordCrypted" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="OwnerPasswordPlaintext" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="OpenPasswordPlaintext" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Permissions" type="tns:PdfPermissions" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="EncryptionAlgorithm">
+        <s:restriction base="s:string">
+          <s:enumeration value="PdfEncryptionNone" />
+          <s:enumeration value="PdfEncryption40BitRC4" />
+          <s:enumeration value="PdfEncryption128BitRC4" />
+          <s:enumeration value="PdfEncryption128BitAES" />
+          <s:enumeration value="PdfEncryption256BitAES" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="PdfPermissions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="CanPrint" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="CanCopy" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="CanModify" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="CanAddNotes" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="CanFillFields" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="CanCopyAccess" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="CanAssemble" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="CanPrintFull" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PdfSignature">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" default="" name="CertificateID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="PrivateKeyPIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="AddTimeStamp" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="true" name="CreateBES" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="CreateEmpty" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="AutoPlacement" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="AutoPlacementOptions" type="tns:PdfSignaturePlacement" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="ShowValidationStatus" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="1" name="Page" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Text" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="ImagePath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="PosX" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="PosY" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="Width" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="Height" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="LocationInfo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="ContactInfo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Reason" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PdfSignaturePlacement">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" default="" name="SearchText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="-1" name="NumOfSigFields" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="-1" name="HorizontalSpacing" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="true" name="SizeInPDFPoints" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PdfTimeStamp">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" default="" name="LocationInfo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="ContactInfo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="Reason" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConvertFileExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConvertFileExResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Output" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="Report" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertFileFromURL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SourceFileURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileUploadURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Options" type="tns:ConvertOptions" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomXMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertFileFromURLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConvertFileFromURLResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="UploadedFileURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Report" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompressPDF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Input" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="Level" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OpenPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ModifySigned" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompressPDFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CompressPDFResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Output" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="Report" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Concat">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FileList" type="tns:ArrayOfConcatFile" />
+            <s:element minOccurs="0" maxOccurs="1" name="ConcatOptions" type="tns:ConcatOptions" />
+            <s:element minOccurs="0" maxOccurs="1" name="Options" type="tns:ConvertOptions" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConcatFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConcatFile" nillable="true" type="tns:ConcatFile" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConcatFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConcatOptions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="Pack" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="Linearize" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="ConcatToFirstFile" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="FFSErrCodes" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConcatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConcatResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Output" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestConvertFile">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestConvertFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestConvertFileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProfileList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetProfileListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetProfileListResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Profiles" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTimeStamp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Hash" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flags" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTimeStampResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTimeStampResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestTimeStampService">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestTimeStampServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestTimeStampServiceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="pdfaVerify">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Input" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="ConformanceLevel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReportLanguage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="pdfaVerifyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pdfaVerifyResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Report" type="tns:PDFAConformanceReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PDFAConformanceReport">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConformanceLevel" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ForcedToImageFormat" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Result" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Issues" type="tns:ArrayOfPDFAIssue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPDFAIssue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PDFAIssue" nillable="true" type="tns:PDFAIssue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PDFAIssue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Severity" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="pdfaConvert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Input" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="ConformanceLevel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReportLanguage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="pdfaConvertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pdfaConvertResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Output" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="Report" type="tns:PDFAConformanceReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="pdfaConvertEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Input" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="ConformanceLevel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Params" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="pdfaConvertExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pdfaConvertExResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Output" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="Report" type="tns:PDFAConformanceReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestPDFA">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestPDFAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestPDFAResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertFromDigital">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Options" type="tns:KzmuAuthorizedOptions" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="KzmuAuthorizedOptions">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:KzmuConversionOptionsBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="InputNote" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreationDate" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="KzmuConversionOptionsBase" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="InputData" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="InputName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JipUsername" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GetHtmlSummary" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="GetPdfSummary" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConvertFromDigitalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConvertFromDigitalResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Results" type="tns:KzmuConversionResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="KzmuConversionResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:KzmuResultBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="KzmuResultBase" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HtmlSummary" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PdfSummary" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="OutputData" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConvertToDigital">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Options" type="tns:KzmuToDigitalOptions" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="KzmuToDigitalOptions">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:KzmuConversionOptionsBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Security" type="tns:KzmuSecuritySettings" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="KzmuSecuritySettings">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Watermark" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmbossedPrinting" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Embossing" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DrySeal" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmbossedFabrication" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="OpticalVariableElement" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Other" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConvertToDigitalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConvertToDigitalResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Results" type="tns:KzmuConversionResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FinalizeConvertToDigital">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Options" type="tns:KzmuFinalizeToDigitalOptions" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="KzmuFinalizeToDigitalOptions">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:KzmuToDigitalOptions">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Guid" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="InputNote" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreationDate" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="FinalizeConvertToDigitalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FinalizeConvertToDigitalResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="TsOut" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVersionInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVersionInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVersionInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestOCR">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestOCRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestOCRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PdfToText">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputPDF" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pages" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flags" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Params" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Lang" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PdfToTextResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PdfToTextResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PdfToText2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputPDF" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flags" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Params" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="XML_Template" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Lang" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PdfToText2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PdfToText2Result" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadBarcode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputPDF" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pages" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flags" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Additional_Info" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadBarcodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReadBarcodeResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Barcode_Result" type="tns:BarcodeInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BarcodeInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="data" type="tns:ArrayOfBarcodeInfo_result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBarcodeInfo_result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BarcodeInfo_result" nillable="true" type="tns:BarcodeInfo_result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BarcodeInfo_result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="data" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="coords" type="tns:Coordinates" />
+          <s:element minOccurs="0" maxOccurs="1" name="user_data" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="page" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="checksum" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Coordinates">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="bottom_left_x" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="top_right_x" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="bottom_left_y" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="top_right_y" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReadBarcodeToString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputPDF" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pages" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flags" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Additional_Info" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadBarcodeToStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReadBarcodeToStringResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="BarcodeData" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateBarcodeToPDF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputPDF" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="placement" type="tns:ArrayOfBarcodePlacement" />
+            <s:element minOccurs="0" maxOccurs="1" name="Flags" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBarcodePlacement">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BarcodePlacement" nillable="true" type="tns:BarcodePlacement" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BarcodePlacement">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="type" type="tns:Barcode_Subtype" />
+          <s:element minOccurs="1" maxOccurs="1" name="Page" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="X" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Y" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Width" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Height" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GenerateBarcodeToPDFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GenerateBarcodeToPDFResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OutputPDF" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateBarcodeToImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Type" type="tns:Barcode_Subtype" />
+            <s:element minOccurs="0" maxOccurs="1" name="Flags" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateBarcodeToImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GenerateBarcodeToImageResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OutputImage" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateCBA_QR_ToPDF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputPDF" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="Page" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="coords" type="tns:Coordinates" />
+            <s:element minOccurs="0" maxOccurs="1" name="Flags" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:CBA_BankInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CBA_BankInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="account_num" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="recipient_msg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="recipient_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="amount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="currency" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="date" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="alternate_account_num" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="reference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="sender_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="payment_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="notification_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="notification_data" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="crc_32" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="X_Repeat_Period" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="X_Var_Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="X_Specific_Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="X_Constant_Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="X_Payment_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="" name="X_URL" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GenerateCBA_QR_ToPDFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GenerateCBA_QR_ToPDFResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OutputPDF" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateCBA_QR_ToImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Flags" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:CBA_BankInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateCBA_QR_ToImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GenerateCBA_QR_ToImageResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OutputImage" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAttachment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputFileData" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="AttachmentFileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AttachmentData" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="AttachmentType" type="tns:AttachmentType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="AttachmentType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Attachment" />
+          <s:enumeration value="Source" />
+          <s:enumeration value="Data" />
+          <s:enumeration value="Alternative" />
+          <s:enumeration value="Supplement" />
+          <s:enumeration value="Unspecified" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AddAttachmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddAttachmentResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="OutputFileData" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertWebPage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="URL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertWebPageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConvertWebPageResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Output" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TestWebServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:TestWebService" />
+  </wsdl:message>
+  <wsdl:message name="TestWebServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:TestWebServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestLicenceSoapIn">
+    <wsdl:part name="parameters" element="tns:TestLicence" />
+  </wsdl:message>
+  <wsdl:message name="TestLicenceSoapOut">
+    <wsdl:part name="parameters" element="tns:TestLicenceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConvertFileSoapIn">
+    <wsdl:part name="parameters" element="tns:ConvertFile" />
+  </wsdl:message>
+  <wsdl:message name="ConvertFileSoapOut">
+    <wsdl:part name="parameters" element="tns:ConvertFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConvertFileExSoapIn">
+    <wsdl:part name="parameters" element="tns:ConvertFileEx" />
+  </wsdl:message>
+  <wsdl:message name="ConvertFileExSoapOut">
+    <wsdl:part name="parameters" element="tns:ConvertFileExResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConvertFileFromURLSoapIn">
+    <wsdl:part name="parameters" element="tns:ConvertFileFromURL" />
+  </wsdl:message>
+  <wsdl:message name="ConvertFileFromURLSoapOut">
+    <wsdl:part name="parameters" element="tns:ConvertFileFromURLResponse" />
+  </wsdl:message>
+  <wsdl:message name="CompressPDFSoapIn">
+    <wsdl:part name="parameters" element="tns:CompressPDF" />
+  </wsdl:message>
+  <wsdl:message name="CompressPDFSoapOut">
+    <wsdl:part name="parameters" element="tns:CompressPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConcatSoapIn">
+    <wsdl:part name="parameters" element="tns:Concat" />
+  </wsdl:message>
+  <wsdl:message name="ConcatSoapOut">
+    <wsdl:part name="parameters" element="tns:ConcatResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestConvertFileSoapIn">
+    <wsdl:part name="parameters" element="tns:TestConvertFile" />
+  </wsdl:message>
+  <wsdl:message name="TestConvertFileSoapOut">
+    <wsdl:part name="parameters" element="tns:TestConvertFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProfileListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProfileList" />
+  </wsdl:message>
+  <wsdl:message name="GetProfileListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProfileListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTimeStampSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTimeStamp" />
+  </wsdl:message>
+  <wsdl:message name="GetTimeStampSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTimeStampResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestTimeStampServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:TestTimeStampService" />
+  </wsdl:message>
+  <wsdl:message name="TestTimeStampServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:TestTimeStampServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="pdfaVerifySoapIn">
+    <wsdl:part name="parameters" element="tns:pdfaVerify" />
+  </wsdl:message>
+  <wsdl:message name="pdfaVerifySoapOut">
+    <wsdl:part name="parameters" element="tns:pdfaVerifyResponse" />
+  </wsdl:message>
+  <wsdl:message name="pdfaConvertSoapIn">
+    <wsdl:part name="parameters" element="tns:pdfaConvert" />
+  </wsdl:message>
+  <wsdl:message name="pdfaConvertSoapOut">
+    <wsdl:part name="parameters" element="tns:pdfaConvertResponse" />
+  </wsdl:message>
+  <wsdl:message name="pdfaConvertExSoapIn">
+    <wsdl:part name="parameters" element="tns:pdfaConvertEx" />
+  </wsdl:message>
+  <wsdl:message name="pdfaConvertExSoapOut">
+    <wsdl:part name="parameters" element="tns:pdfaConvertExResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestPDFASoapIn">
+    <wsdl:part name="parameters" element="tns:TestPDFA" />
+  </wsdl:message>
+  <wsdl:message name="TestPDFASoapOut">
+    <wsdl:part name="parameters" element="tns:TestPDFAResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConvertFromDigitalSoapIn">
+    <wsdl:part name="parameters" element="tns:ConvertFromDigital" />
+  </wsdl:message>
+  <wsdl:message name="ConvertFromDigitalSoapOut">
+    <wsdl:part name="parameters" element="tns:ConvertFromDigitalResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConvertToDigitalSoapIn">
+    <wsdl:part name="parameters" element="tns:ConvertToDigital" />
+  </wsdl:message>
+  <wsdl:message name="ConvertToDigitalSoapOut">
+    <wsdl:part name="parameters" element="tns:ConvertToDigitalResponse" />
+  </wsdl:message>
+  <wsdl:message name="FinalizeConvertToDigitalSoapIn">
+    <wsdl:part name="parameters" element="tns:FinalizeConvertToDigital" />
+  </wsdl:message>
+  <wsdl:message name="FinalizeConvertToDigitalSoapOut">
+    <wsdl:part name="parameters" element="tns:FinalizeConvertToDigitalResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVersionInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVersionInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestOCRSoapIn">
+    <wsdl:part name="parameters" element="tns:TestOCR" />
+  </wsdl:message>
+  <wsdl:message name="TestOCRSoapOut">
+    <wsdl:part name="parameters" element="tns:TestOCRResponse" />
+  </wsdl:message>
+  <wsdl:message name="PdfToTextSoapIn">
+    <wsdl:part name="parameters" element="tns:PdfToText" />
+  </wsdl:message>
+  <wsdl:message name="PdfToTextSoapOut">
+    <wsdl:part name="parameters" element="tns:PdfToTextResponse" />
+  </wsdl:message>
+  <wsdl:message name="PdfToText2SoapIn">
+    <wsdl:part name="parameters" element="tns:PdfToText2" />
+  </wsdl:message>
+  <wsdl:message name="PdfToText2SoapOut">
+    <wsdl:part name="parameters" element="tns:PdfToText2Response" />
+  </wsdl:message>
+  <wsdl:message name="ReadBarcodeSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadBarcode" />
+  </wsdl:message>
+  <wsdl:message name="ReadBarcodeSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadBarcodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadBarcodeToStringSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadBarcodeToString" />
+  </wsdl:message>
+  <wsdl:message name="ReadBarcodeToStringSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadBarcodeToStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateBarcodeToPDFSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateBarcodeToPDF" />
+  </wsdl:message>
+  <wsdl:message name="GenerateBarcodeToPDFSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateBarcodeToPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateBarcodeToImageSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateBarcodeToImage" />
+  </wsdl:message>
+  <wsdl:message name="GenerateBarcodeToImageSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateBarcodeToImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateCBA_QR_ToPDFSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateCBA_QR_ToPDF" />
+  </wsdl:message>
+  <wsdl:message name="GenerateCBA_QR_ToPDFSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateCBA_QR_ToPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateCBA_QR_ToImageSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateCBA_QR_ToImage" />
+  </wsdl:message>
+  <wsdl:message name="GenerateCBA_QR_ToImageSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateCBA_QR_ToImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddAttachmentSoapIn">
+    <wsdl:part name="parameters" element="tns:AddAttachment" />
+  </wsdl:message>
+  <wsdl:message name="AddAttachmentSoapOut">
+    <wsdl:part name="parameters" element="tns:AddAttachmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConvertWebPageSoapIn">
+    <wsdl:part name="parameters" element="tns:ConvertWebPage" />
+  </wsdl:message>
+  <wsdl:message name="ConvertWebPageSoapOut">
+    <wsdl:part name="parameters" element="tns:ConvertWebPageResponse" />
+  </wsdl:message>
+  <wsdl:portType name="LTDWebServiceSoap">
+    <wsdl:operation name="TestWebService">
+      <wsdl:input message="tns:TestWebServiceSoapIn" />
+      <wsdl:output message="tns:TestWebServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestLicence">
+      <wsdl:input message="tns:TestLicenceSoapIn" />
+      <wsdl:output message="tns:TestLicenceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConvertFile">
+      <wsdl:input message="tns:ConvertFileSoapIn" />
+      <wsdl:output message="tns:ConvertFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConvertFileEx">
+      <wsdl:input message="tns:ConvertFileExSoapIn" />
+      <wsdl:output message="tns:ConvertFileExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConvertFileFromURL">
+      <wsdl:input message="tns:ConvertFileFromURLSoapIn" />
+      <wsdl:output message="tns:ConvertFileFromURLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CompressPDF">
+      <wsdl:input message="tns:CompressPDFSoapIn" />
+      <wsdl:output message="tns:CompressPDFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Concat">
+      <wsdl:input message="tns:ConcatSoapIn" />
+      <wsdl:output message="tns:ConcatSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestConvertFile">
+      <wsdl:input message="tns:TestConvertFileSoapIn" />
+      <wsdl:output message="tns:TestConvertFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileList">
+      <wsdl:input message="tns:GetProfileListSoapIn" />
+      <wsdl:output message="tns:GetProfileListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeStamp">
+      <wsdl:input message="tns:GetTimeStampSoapIn" />
+      <wsdl:output message="tns:GetTimeStampSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestTimeStampService">
+      <wsdl:input message="tns:TestTimeStampServiceSoapIn" />
+      <wsdl:output message="tns:TestTimeStampServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="pdfaVerify">
+      <wsdl:input message="tns:pdfaVerifySoapIn" />
+      <wsdl:output message="tns:pdfaVerifySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="pdfaConvert">
+      <wsdl:input message="tns:pdfaConvertSoapIn" />
+      <wsdl:output message="tns:pdfaConvertSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="pdfaConvertEx">
+      <wsdl:input message="tns:pdfaConvertExSoapIn" />
+      <wsdl:output message="tns:pdfaConvertExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestPDFA">
+      <wsdl:input message="tns:TestPDFASoapIn" />
+      <wsdl:output message="tns:TestPDFASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConvertFromDigital">
+      <wsdl:input message="tns:ConvertFromDigitalSoapIn" />
+      <wsdl:output message="tns:ConvertFromDigitalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConvertToDigital">
+      <wsdl:input message="tns:ConvertToDigitalSoapIn" />
+      <wsdl:output message="tns:ConvertToDigitalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FinalizeConvertToDigital">
+      <wsdl:input message="tns:FinalizeConvertToDigitalSoapIn" />
+      <wsdl:output message="tns:FinalizeConvertToDigitalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersionInfo">
+      <wsdl:input message="tns:GetVersionInfoSoapIn" />
+      <wsdl:output message="tns:GetVersionInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestOCR">
+      <wsdl:input message="tns:TestOCRSoapIn" />
+      <wsdl:output message="tns:TestOCRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PdfToText">
+      <wsdl:input message="tns:PdfToTextSoapIn" />
+      <wsdl:output message="tns:PdfToTextSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PdfToText2">
+      <wsdl:input message="tns:PdfToText2SoapIn" />
+      <wsdl:output message="tns:PdfToText2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadBarcode">
+      <wsdl:input message="tns:ReadBarcodeSoapIn" />
+      <wsdl:output message="tns:ReadBarcodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadBarcodeToString">
+      <wsdl:input message="tns:ReadBarcodeToStringSoapIn" />
+      <wsdl:output message="tns:ReadBarcodeToStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateBarcodeToPDF">
+      <wsdl:input message="tns:GenerateBarcodeToPDFSoapIn" />
+      <wsdl:output message="tns:GenerateBarcodeToPDFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateBarcodeToImage">
+      <wsdl:input message="tns:GenerateBarcodeToImageSoapIn" />
+      <wsdl:output message="tns:GenerateBarcodeToImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateCBA_QR_ToPDF">
+      <wsdl:input message="tns:GenerateCBA_QR_ToPDFSoapIn" />
+      <wsdl:output message="tns:GenerateCBA_QR_ToPDFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateCBA_QR_ToImage">
+      <wsdl:input message="tns:GenerateCBA_QR_ToImageSoapIn" />
+      <wsdl:output message="tns:GenerateCBA_QR_ToImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAttachment">
+      <wsdl:input message="tns:AddAttachmentSoapIn" />
+      <wsdl:output message="tns:AddAttachmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConvertWebPage">
+      <wsdl:input message="tns:ConvertWebPageSoapIn" />
+      <wsdl:output message="tns:ConvertWebPageSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LTDWebServiceSoap" type="tns:LTDWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TestWebService">
+      <soap:operation soapAction="http://software602.com/longtermdocs/TestWebService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestLicence">
+      <soap:operation soapAction="http://software602.com/longtermdocs/TestLicence" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertFile">
+      <soap:operation soapAction="http://software602.com/longtermdocs/ConvertFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertFileEx">
+      <soap:operation soapAction="http://software602.com/longtermdocs/ConvertFileEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertFileFromURL">
+      <soap:operation soapAction="http://software602.com/longtermdocs/ConvertFileFromURL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompressPDF">
+      <soap:operation soapAction="http://software602.com/longtermdocs/CompressPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Concat">
+      <soap:operation soapAction="http://software602.com/longtermdocs/Concat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestConvertFile">
+      <soap:operation soapAction="http://software602.com/longtermdocs/TestConvertFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileList">
+      <soap:operation soapAction="http://software602.com/longtermdocs/GetProfileList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeStamp">
+      <soap:operation soapAction="http://software602.com/longtermdocs/GetTimeStamp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestTimeStampService">
+      <soap:operation soapAction="http://software602.com/longtermdocs/TestTimeStampService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pdfaVerify">
+      <soap:operation soapAction="http://software602.com/longtermdocs/pdfaVerify" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pdfaConvert">
+      <soap:operation soapAction="http://software602.com/longtermdocs/pdfaConvert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pdfaConvertEx">
+      <soap:operation soapAction="http://software602.com/longtermdocs/pdfaConvertEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestPDFA">
+      <soap:operation soapAction="http://software602.com/longtermdocs/TestPDFA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertFromDigital">
+      <soap:operation soapAction="http://software602.com/longtermdocs/ConvertFromDigital" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertToDigital">
+      <soap:operation soapAction="http://software602.com/longtermdocs/ConvertToDigital" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinalizeConvertToDigital">
+      <soap:operation soapAction="http://software602.com/longtermdocs/FinalizeConvertToDigital" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersionInfo">
+      <soap:operation soapAction="http://software602.com/longtermdocs/GetVersionInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestOCR">
+      <soap:operation soapAction="http://software602.com/longtermdocs/TestOCR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PdfToText">
+      <soap:operation soapAction="http://software602.com/longtermdocs/PdfToText" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PdfToText2">
+      <soap:operation soapAction="http://software602.com/longtermdocs/PdfToText2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadBarcode">
+      <soap:operation soapAction="http://software602.com/longtermdocs/ReadBarcode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadBarcodeToString">
+      <soap:operation soapAction="http://software602.com/longtermdocs/ReadBarcodeToString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateBarcodeToPDF">
+      <soap:operation soapAction="http://software602.com/longtermdocs/GenerateBarcodeToPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateBarcodeToImage">
+      <soap:operation soapAction="http://software602.com/longtermdocs/GenerateBarcodeToImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateCBA_QR_ToPDF">
+      <soap:operation soapAction="http://software602.com/longtermdocs/GenerateCBA_QR_ToPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateCBA_QR_ToImage">
+      <soap:operation soapAction="http://software602.com/longtermdocs/GenerateCBA_QR_ToImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAttachment">
+      <soap:operation soapAction="http://software602.com/longtermdocs/AddAttachment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertWebPage">
+      <soap:operation soapAction="http://software602.com/longtermdocs/ConvertWebPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LTDWebServiceSoap12" type="tns:LTDWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TestWebService">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/TestWebService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestLicence">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/TestLicence" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertFile">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/ConvertFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertFileEx">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/ConvertFileEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertFileFromURL">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/ConvertFileFromURL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompressPDF">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/CompressPDF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Concat">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/Concat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestConvertFile">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/TestConvertFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileList">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/GetProfileList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeStamp">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/GetTimeStamp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestTimeStampService">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/TestTimeStampService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pdfaVerify">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/pdfaVerify" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pdfaConvert">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/pdfaConvert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pdfaConvertEx">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/pdfaConvertEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestPDFA">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/TestPDFA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertFromDigital">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/ConvertFromDigital" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertToDigital">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/ConvertToDigital" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinalizeConvertToDigital">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/FinalizeConvertToDigital" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersionInfo">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/GetVersionInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestOCR">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/TestOCR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PdfToText">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/PdfToText" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PdfToText2">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/PdfToText2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadBarcode">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/ReadBarcode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadBarcodeToString">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/ReadBarcodeToString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateBarcodeToPDF">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/GenerateBarcodeToPDF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateBarcodeToImage">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/GenerateBarcodeToImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateCBA_QR_ToPDF">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/GenerateCBA_QR_ToPDF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateCBA_QR_ToImage">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/GenerateCBA_QR_ToImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAttachment">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/AddAttachment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertWebPage">
+      <soap12:operation soapAction="http://software602.com/longtermdocs/ConvertWebPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LTDWebService">
+    <wsdl:port name="LTDWebServiceSoap" binding="tns:LTDWebServiceSoap">
+      <soap:address location="http://10.85.68.11/ltd/ltd.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LTDWebServiceSoap12" binding="tns:LTDWebServiceSoap12">
+      <soap12:address location="http://10.85.68.11/ltd/ltd.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

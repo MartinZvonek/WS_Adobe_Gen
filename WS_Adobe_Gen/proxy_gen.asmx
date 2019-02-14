@@ -1,0 +1,1 @@
+<%@ WebService Language="C#" CodeBehind="proxy_gen.asmx.cs" Class="WS_Adobe_Gen.AdobeGenService" %>
